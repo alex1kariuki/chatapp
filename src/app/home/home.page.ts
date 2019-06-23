@@ -26,12 +26,17 @@ export class HomePage {
       msg: 'Sounds good'
     },
     {
+      user: 'alex',
+      createdAt: 11234567890133,
+      msg: '👍'
+    },
+    {
       user: 'gilbert',
       createdAt: 11234567890143,
       msg: 'See you then'
     }
   ];
-  currentUser = 'alex';
+  currentUser = 'gilbert';
   newMsg = '';
 
   constructor() { }
@@ -39,7 +44,7 @@ export class HomePage {
 
   sendMessage() {
     this.messages.push({
-      user: '',
+      user: 'gilbert',
       createdAt: new Date().getTime(),
       msg: this.newMsg
     });
