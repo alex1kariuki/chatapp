@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,46 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  @ViewChild(IonContent) content: IonContent;
+  messages = [
+    {
+      user: 'alex',
+      createdAt: 11234567890123,
+      msg: 'Hey, wanna go for lunch?'
+    },
+    {
+      user: 'gilbert',
+      createdAt: 11234567890126,
+      msg: 'Yeah, how about at 2pm?'
+    },
+    {
+      user: 'alex',
+      createdAt: 11234567890133,
+      msg: 'Sounds good'
+    },
+    {
+      user: 'gilbert',
+      createdAt: 11234567890143,
+      msg: 'See you then'
+    }
+  ];
+  currentUser = 'alex';
+  newMsg = '';
 
-  constructor() {}
+  constructor() { }
 
+
+  sendMessage() {
+    this.messages.push({
+      user: '',
+      createdAt: new Date().getTime(),
+      msg: this.newMsg
+    });
+
+    this.newMsg = '';
+
+    setTimeout(() => {
+      this.content.scrollToBottom(200);
+    });
+  }
 }
